@@ -1462,7 +1462,7 @@ func DiscoverSystemPolicyMain() {
 
 func StartSystemLogRcvr() {
 	for {
-		if cfg.GetCfgSystemLogFrom() == "kubearmor" {
+		if cfg.GetCfgSystemLogFrom() == "kubearmor" && !plugin.KubeArmorRelayStarted {
 			url := cluster.GetKubearmorRelayURL()
 			if url == "" {
 				log.Error().Msg("kubearmor-relay url not found, retrying...")
